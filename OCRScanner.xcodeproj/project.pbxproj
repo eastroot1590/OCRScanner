@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9FE1C18CE42656981125242D /* Pods_OCRScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9B2ED1FF3EB25A35A7604C7 /* Pods_OCRScanner.framework */; };
+		D34D99C02682B1310024F618 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34D99BF2682B1310024F618 /* Client.swift */; };
+		D3F1FF2F268191A500073B87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F1FF2E268191A500073B87 /* AppDelegate.swift */; };
+		D3F1FF31268191A500073B87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F1FF30268191A500073B87 /* SceneDelegate.swift */; };
+		D3F1FF33268191A500073B87 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F1FF32268191A500073B87 /* MainViewController.swift */; };
+		D3F1FF38268191A600073B87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3F1FF37268191A600073B87 /* Assets.xcassets */; };
+		D3F1FF3B268191A600073B87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3F1FF39268191A600073B87 /* LaunchScreen.storyboard */; };
+		D3F1FF432681922800073B87 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F1FF422681922800073B87 /* RootNavigationController.swift */; };
+		D3F1FF452681935800073B87 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = D3F1FF442681935800073B87 /* tessdata */; };
+		D3F1FF472681970600073B87 /* UIImage+OCR.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F1FF462681970600073B87 /* UIImage+OCR.swift */; };
+		D3F1FF492681AEF900073B87 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3F1FF482681AEF900073B87 /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D34D99BF2682B1310024F618 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		D3F1FF2B268191A500073B87 /* OCRScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCRScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3F1FF2E268191A500073B87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D3F1FF30268191A500073B87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D3F1FF32268191A500073B87 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D3F1FF37268191A600073B87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3F1FF3A268191A600073B87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D3F1FF3C268191A600073B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3F1FF422681922800073B87 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
+		D3F1FF442681935800073B87 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
+		D3F1FF462681970600073B87 /* UIImage+OCR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+OCR.swift"; sourceTree = "<group>"; };
+		D3F1FF482681AEF900073B87 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D85EAAE3BB07DC66A41C0802 /* Pods-OCRScanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OCRScanner.release.xcconfig"; path = "Target Support Files/Pods-OCRScanner/Pods-OCRScanner.release.xcconfig"; sourceTree = "<group>"; };
+		D92646A60319BE574D05BF60 /* Pods-OCRScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OCRScanner.debug.xcconfig"; path = "Target Support Files/Pods-OCRScanner/Pods-OCRScanner.debug.xcconfig"; sourceTree = "<group>"; };
+		E9B2ED1FF3EB25A35A7604C7 /* Pods_OCRScanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OCRScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D3F1FF28268191A500073B87 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FE1C18CE42656981125242D /* Pods_OCRScanner.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		260B869A56CD0182AC111F2E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9B2ED1FF3EB25A35A7604C7 /* Pods_OCRScanner.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		29D099787EA1111B3F82EF7A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D92646A60319BE574D05BF60 /* Pods-OCRScanner.debug.xcconfig */,
+				D85EAAE3BB07DC66A41C0802 /* Pods-OCRScanner.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D3F1FF22268191A500073B87 = {
+			isa = PBXGroup;
+			children = (
+				D3F1FF2D268191A500073B87 /* OCRScanner */,
+				D3F1FF2C268191A500073B87 /* Products */,
+				29D099787EA1111B3F82EF7A /* Pods */,
+				260B869A56CD0182AC111F2E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D3F1FF2C268191A500073B87 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D3F1FF2B268191A500073B87 /* OCRScanner.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D3F1FF2D268191A500073B87 /* OCRScanner */ = {
+			isa = PBXGroup;
+			children = (
+				D3F1FF2E268191A500073B87 /* AppDelegate.swift */,
+				D3F1FF30268191A500073B87 /* SceneDelegate.swift */,
+				D3F1FF32268191A500073B87 /* MainViewController.swift */,
+				D3F1FF37268191A600073B87 /* Assets.xcassets */,
+				D3F1FF442681935800073B87 /* tessdata */,
+				D3F1FF39268191A600073B87 /* LaunchScreen.storyboard */,
+				D3F1FF3C268191A600073B87 /* Info.plist */,
+				D3F1FF482681AEF900073B87 /* GoogleService-Info.plist */,
+				D3F1FF422681922800073B87 /* RootNavigationController.swift */,
+				D3F1FF462681970600073B87 /* UIImage+OCR.swift */,
+				D34D99BF2682B1310024F618 /* Client.swift */,
+			);
+			path = OCRScanner;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D3F1FF2A268191A500073B87 /* OCRScanner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3F1FF3F268191A600073B87 /* Build configuration list for PBXNativeTarget "OCRScanner" */;
+			buildPhases = (
+				8448E919469EF5F65E2CBB02 /* [CP] Check Pods Manifest.lock */,
+				D3F1FF27268191A500073B87 /* Sources */,
+				D3F1FF28268191A500073B87 /* Frameworks */,
+				D3F1FF29268191A500073B87 /* Resources */,
+				8CDFE7FACAB674EBB50259D2 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OCRScanner;
+			productName = OCRScanner;
+			productReference = D3F1FF2B268191A500073B87 /* OCRScanner.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D3F1FF23268191A500073B87 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					D3F1FF2A268191A500073B87 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+				};
+			};
+			buildConfigurationList = D3F1FF26268191A500073B87 /* Build configuration list for PBXProject "OCRScanner" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D3F1FF22268191A500073B87;
+			productRefGroup = D3F1FF2C268191A500073B87 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D3F1FF2A268191A500073B87 /* OCRScanner */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D3F1FF29268191A500073B87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3F1FF3B268191A600073B87 /* LaunchScreen.storyboard in Resources */,
+				D3F1FF492681AEF900073B87 /* GoogleService-Info.plist in Resources */,
+				D3F1FF38268191A600073B87 /* Assets.xcassets in Resources */,
+				D3F1FF452681935800073B87 /* tessdata in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8448E919469EF5F65E2CBB02 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OCRScanner-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CDFE7FACAB674EBB50259D2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OCRScanner/Pods-OCRScanner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OCRScanner/Pods-OCRScanner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OCRScanner/Pods-OCRScanner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D3F1FF27268191A500073B87 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3F1FF33268191A500073B87 /* MainViewController.swift in Sources */,
+				D3F1FF432681922800073B87 /* RootNavigationController.swift in Sources */,
+				D34D99C02682B1310024F618 /* Client.swift in Sources */,
+				D3F1FF2F268191A500073B87 /* AppDelegate.swift in Sources */,
+				D3F1FF31268191A500073B87 /* SceneDelegate.swift in Sources */,
+				D3F1FF472681970600073B87 /* UIImage+OCR.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D3F1FF39268191A600073B87 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3F1FF3A268191A600073B87 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D3F1FF3D268191A600073B87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D3F1FF3E268191A600073B87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D3F1FF40268191A600073B87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D92646A60319BE574D05BF60 /* Pods-OCRScanner.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 36QX26G9F8;
+				INFOPLIST_FILE = OCRScanner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.eastroot.OCRScanner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D3F1FF41268191A600073B87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D85EAAE3BB07DC66A41C0802 /* Pods-OCRScanner.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 36QX26G9F8;
+				INFOPLIST_FILE = OCRScanner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.eastroot.OCRScanner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D3F1FF26268191A500073B87 /* Build configuration list for PBXProject "OCRScanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3F1FF3D268191A600073B87 /* Debug */,
+				D3F1FF3E268191A600073B87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3F1FF3F268191A600073B87 /* Build configuration list for PBXNativeTarget "OCRScanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3F1FF40268191A600073B87 /* Debug */,
+				D3F1FF41268191A600073B87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D3F1FF23268191A500073B87 /* Project object */;
+}
