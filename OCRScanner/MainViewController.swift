@@ -85,21 +85,18 @@ class MainViewController: UIViewController {
             kakaoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
-        scannedString.font = .systemFont(ofSize: 16)
-        scannedString.backgroundColor = .black
+        scannedString.font = .systemFont(ofSize: 12)
         scannedString.numberOfLines = 0
-        scannedString.textColor = .white
+        scannedString.textColor = .label
         scannedString.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scannedString)
         NSLayoutConstraint.activate([
             scannedString.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            scannedString.topAnchor.constraint(equalTo: kakaoButton.bottomAnchor, constant: 20)
+            scannedString.topAnchor.constraint(equalTo: kakaoButton.bottomAnchor, constant: 40)
         ])
     }
     
     @objc func pickImage(_ sender: UIButton) {
-        scannedString.text = "로딩중..."
-        
         if sender == mlvisionButton {
             loadPicker(with: .mlvision)
         } else if sender == tesseractButton {
@@ -112,10 +109,10 @@ class MainViewController: UIViewController {
     private func loadPicker(with engine: OCREngine) {
         self.engine = engine
         
-        let imagePickerActionSheet = UIAlertController(title: "Snap/Upload Image", message: nil, preferredStyle: .actionSheet)
+        let imagePickerActionSheet = UIAlertController(title: "OCR 스캔하기", message: nil, preferredStyle: .actionSheet)
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let cameraButton = UIAlertAction(title: "Take Photo", style: .default) { alert in
+            let cameraButton = UIAlertAction(title: "카메라에서", style: .default) { alert in
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.sourceType = .camera
@@ -125,7 +122,7 @@ class MainViewController: UIViewController {
             imagePickerActionSheet.addAction(cameraButton)
         }
         
-        let libraryButton = UIAlertAction(title: "Choose Existing", style: .default) { alert in
+        let libraryButton = UIAlertAction(title: "사진에서", style: .default) { alert in
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
@@ -134,7 +131,7 @@ class MainViewController: UIViewController {
         }
         imagePickerActionSheet.addAction(libraryButton)
         
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel)
         imagePickerActionSheet.addAction(cancelButton)
         
         present(imagePickerActionSheet, animated: true)
@@ -215,7 +212,6 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedPhoto = info[.originalImage] as? UIImage else {
             dismiss(animated: true)
@@ -223,6 +219,8 @@ extension MainViewController: UINavigationControllerDelegate, UIImagePickerContr
         }
         
         dismiss(animated: true) {
+            self.scannedString.text = "로딩중..."
+            
             switch self.engine {
             case .mlvision:
                 self.mlvisionOCR(selectedPhoto)
