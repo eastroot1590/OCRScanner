@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (5.4.3)
   - Firebase/CoreOnly (6.25.0):
     - FirebaseCore (= 6.7.1)
   - Firebase/Functions (6.25.0):
@@ -92,14 +91,12 @@ PODS:
   - TesseractOCRiOS (5.0.1)
 
 DEPENDENCIES:
-  - Alamofire
   - Firebase/Functions
   - Firebase/MLVision (= 6.25.0)
   - TesseractOCRiOS
 
 SPEC REPOS:
   trunk:
-    - Alamofire
     - Firebase
     - FirebaseAuthInterop
     - FirebaseCore
@@ -121,7 +118,6 @@ SPEC REPOS:
     - TesseractOCRiOS
 
 SPEC CHECKSUMS:
-  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   Firebase: 5719b4f965f76643241a1bb8244483ff6117db39
   FirebaseAuthInterop: a0f37ae05833af156e72028f648d313f7e7592e9
   FirebaseCore: 6023faeada5afa95a349fccafb40900e32e9ac42
@@ -142,6 +138,6 @@ SPEC CHECKSUMS:
   Protobuf: 7327d4444215b5f18e560a97f879ff5503c4581c
   TesseractOCRiOS: 2c189465f86abb030d0c5141c90da9705b647854
 
-PODFILE CHECKSUM: f715365ab3e8233609c1ab08aacf00eeb400968a
+PODFILE CHECKSUM: 6a06b879664b48f2dbac28a4ed2fc9afacaa3bd1
 
 COCOAPODS: 1.10.1

@@ -21,23 +21,19 @@ struct KakaoResponse: Decodable {
 }
 
 class MainViewController: UIViewController {
-    enum OCREngine {
-        case mlvision
-        case tesseract
-        case kakao
+    enum OCREngine: String {
+        case MLVision
+        case Tesseract
+        case Kakao
     }
     
     let scannedString: UILabel = UILabel()
     
-    let scalePicker = UIPickerView()
+    let scanOptionPicker = UIPickerView()
     let scales: [CGFloat] = [300, 500, 1000]
     var scaleFactor: CGFloat = 300
-    
-    let tesseractButton = UIButton()
-    let mlvisionButton = UIButton()
-    let kakaoButton = UIButton()
-    
-    var engine: OCREngine = .mlvision
+    let engines: [OCREngine] = [.MLVision, .Tesseract, .Kakao]
+    var engine: OCREngine = .MLVision
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,43 +42,27 @@ class MainViewController: UIViewController {
         
         title = "Main"
         
-        scalePicker.dataSource = self
-        scalePicker.delegate = self
-        scalePicker.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(scalePicker)
+        scanOptionPicker.dataSource = self
+        scanOptionPicker.delegate = self
+        scanOptionPicker.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(scanOptionPicker)
         NSLayoutConstraint.activate([
-            scalePicker.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
-            scalePicker.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            scanOptionPicker.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
+            scanOptionPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
-        tesseractButton.setTitleColor(.label, for: .normal)
-        tesseractButton.setTitle("OCR with Tesseract", for: .normal)
-        tesseractButton.addTarget(self, action: #selector(pickImage), for: .touchUpInside)
-        tesseractButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tesseractButton)
+        let loadPickerButton = UIButton()
+        loadPickerButton.backgroundColor = .systemBlue
+        loadPickerButton.setTitle("사진 선택", for: .normal)
+        loadPickerButton.setTitleColor(.white, for: .normal)
+        loadPickerButton.addTarget(self, action: #selector(loadImagePicker), for: .touchUpInside)
+        loadPickerButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(loadPickerButton)
         NSLayoutConstraint.activate([
-            tesseractButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            tesseractButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100)
-        ])
-        
-        mlvisionButton.setTitleColor(.label, for: .normal)
-        mlvisionButton.setTitle("OCR with MLVision", for: .normal)
-        mlvisionButton.addTarget(self, action: #selector(pickImage), for: .touchUpInside)
-        mlvisionButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(mlvisionButton)
-        NSLayoutConstraint.activate([
-            mlvisionButton.topAnchor.constraint(equalTo: tesseractButton.bottomAnchor, constant: 20),
-            mlvisionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
-        
-        kakaoButton.setTitleColor(.label, for: .normal)
-        kakaoButton.setTitle("OCR with KakaoVision", for: .normal)
-        kakaoButton.addTarget(self, action: #selector(pickImage), for: .touchUpInside)
-        kakaoButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(kakaoButton)
-        NSLayoutConstraint.activate([
-            kakaoButton.topAnchor.constraint(equalTo: mlvisionButton.bottomAnchor, constant: 20),
-            kakaoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            loadPickerButton.topAnchor.constraint(equalTo: scanOptionPicker.bottomAnchor, constant: 50),
+            loadPickerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadPickerButton.widthAnchor.constraint(equalTo: view.widthAnchor),
+            loadPickerButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
         scannedString.font = .systemFont(ofSize: 12)
@@ -92,23 +72,11 @@ class MainViewController: UIViewController {
         view.addSubview(scannedString)
         NSLayoutConstraint.activate([
             scannedString.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            scannedString.topAnchor.constraint(equalTo: kakaoButton.bottomAnchor, constant: 40)
+            scannedString.topAnchor.constraint(equalTo: loadPickerButton.bottomAnchor, constant: 40)
         ])
     }
     
-    @objc func pickImage(_ sender: UIButton) {
-        if sender == mlvisionButton {
-            loadPicker(with: .mlvision)
-        } else if sender == tesseractButton {
-            loadPicker(with: .tesseract)
-        } else if sender == kakaoButton {
-            loadPicker(with: .kakao)
-        }
-    }
-    
-    private func loadPicker(with engine: OCREngine) {
-        self.engine = engine
-        
+    @objc func loadImagePicker() {
         let imagePickerActionSheet = UIAlertController(title: "OCR 스캔하기", message: nil, preferredStyle: .actionSheet)
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -138,18 +106,13 @@ class MainViewController: UIViewController {
     }
     
     private func tesseractOCR(_ sourceImage: UIImage) {
-        print("scale factor \(scaleFactor)")
-        guard let scaledImage = sourceImage.scaledImage(scaleFactor) else {
-            return
-        }
-        
         if let tesseract = G8Tesseract(language: "kor+eng") {
             tesseract.engineMode = .tesseractOnly
             tesseract.pageSegmentationMode = .auto
-            tesseract.image = scaledImage
+            tesseract.image = sourceImage
             
             if tesseract.recognize() {
-                self.scannedString.text = "Tesseract: \(tesseract.recognizedText ?? "인식 실패")"
+                self.scannedString.text = "Tesseract:\n\(tesseract.recognizedText ?? "인식 실패")"
             } else {
                 print("scan fail")
             }
@@ -157,16 +120,11 @@ class MainViewController: UIViewController {
     }
     
     private func mlvisionOCR(_ sourceImage: UIImage) {
-        print("scale factor \(scaleFactor)")
-        guard let scaledImage = sourceImage.scaledImage(scaleFactor) else {
-            return
-        }
-        
         let vision = Vision.vision()
         let options = VisionCloudTextRecognizerOptions()
         options.languageHints = ["en", "ko"]
         let textRecognizer = vision.cloudTextRecognizer()
-        textRecognizer.process(VisionImage(image: scaledImage)) { result, error in
+        textRecognizer.process(VisionImage(image: sourceImage)) { result, error in
             if let error = error {
                 debugPrint(error)
             }
@@ -181,17 +139,12 @@ class MainViewController: UIViewController {
                 print("\(block.text)/")
                 content.append("\(block.text)\n")
             }
-            self.scannedString.text = "MLVisioin: \(content)"
+            self.scannedString.text = "MLVisioin:\n\(content)"
         }
     }
     
     private func kakaoOCR(_ sourceImage: UIImage) {
-        print("scale factor \(scaleFactor)")
-        guard let scaledImage = sourceImage.scaledImage(scaleFactor) else {
-            return
-        }
-        
-        Client().requestServer("https://dapi.kakao.com/v2/vision/text/ocr", parameter: scaledImage.jpegData(compressionQuality: 1), responseType: KakaoResponse.self, completed: { result in
+        Client().requestServer("https://dapi.kakao.com/v2/vision/text/ocr", parameter: sourceImage.jpegData(compressionQuality: 1), responseType: KakaoResponse.self, completed: { result in
             guard let result = result else {
                 print("response fail")
                 return
@@ -205,7 +158,7 @@ class MainViewController: UIViewController {
                 }
             }
             
-            self.scannedString.text = "Kakao: \(resultString)"
+            self.scannedString.text = "Kakao:\n\(resultString)"
         })
     }
     
@@ -218,18 +171,24 @@ extension MainViewController: UINavigationControllerDelegate, UIImagePickerContr
             return
         }
         
+        
         dismiss(animated: true) {
+            print("scale factor \(self.scaleFactor)")
+            guard let scaledImage = selectedPhoto.scaledImage(self.scaleFactor) else {
+                return
+            }
+            
             self.scannedString.text = "로딩중..."
             
             switch self.engine {
-            case .mlvision:
-                self.mlvisionOCR(selectedPhoto)
+            case .MLVision:
+                self.mlvisionOCR(scaledImage)
                 
-            case .tesseract:
-                self.tesseractOCR(selectedPhoto)
+            case .Tesseract:
+                self.tesseractOCR(scaledImage)
                 
-            case .kakao:
-                self.kakaoOCR(selectedPhoto)
+            case .Kakao:
+                self.kakaoOCR(scaledImage)
             }
         }
     }
@@ -237,26 +196,50 @@ extension MainViewController: UINavigationControllerDelegate, UIImagePickerContr
 
 extension MainViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
+        2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        scales.count
+        if component == 0 {
+            return scales.count
+        } else if component == 1 {
+            return engines.count
+        } else {
+            return 0
+        }
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard row < scales.count else {
+        if component == 0 {
+            guard row < scales.count else {
+                return nil
+            }
+            
+            return scales[row].description
+        } else if component == 1 {
+            guard row < engines.count else {
+                return nil
+            }
+            
+            return engines[row].rawValue
+        } else {
             return nil
         }
-        
-        return scales[row].description
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard row < scales.count else {
-            return
+        if component == 0 {
+            guard row < scales.count else {
+                return
+            }
+            
+            self.scaleFactor = scales[row]
+        } else if component == 1 {
+            guard row < engines.count else {
+                return
+            }
+            
+            self.engine = engines[row]
         }
-        
-        self.scaleFactor = scales[row]
     }
 }
