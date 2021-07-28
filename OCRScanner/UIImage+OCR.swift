@@ -8,22 +8,24 @@
 import UIKit
 
 extension UIImage {
-    
     func scaledImage(_ maxDimension: CGFloat) -> UIImage? {
-        // 3
+        guard size.width > maxDimension || size.height > maxDimension else {
+            return self
+        }
+        
         var scaledSize = CGSize(width: maxDimension, height: maxDimension)
-        // 4
+        
         if size.width > size.height {
             scaledSize.height = size.height / size.width * scaledSize.width
         } else {
             scaledSize.width = size.width / size.height * scaledSize.height
         }
-        // 5
+        
         UIGraphicsBeginImageContext(scaledSize)
         draw(in: CGRect(origin: .zero, size: scaledSize))
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        // 6
+        
         return scaledImage
     }
 }

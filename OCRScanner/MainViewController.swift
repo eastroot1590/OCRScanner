@@ -9,6 +9,8 @@ import UIKit
 import MobileCoreServices
 import TesseractOCR
 
+import PEPhotoCropEditor
+
 import Firebase
 
 struct KakaoResponse: Decodable {
@@ -27,13 +29,14 @@ class MainViewController: UIViewController {
         case Kakao
     }
     
+    let scanOptionPicker = UIPickerView()
+    
     let scannedString: UILabel = UILabel()
     
-    let scanOptionPicker = UIPickerView()
     let scales: [CGFloat] = [300, 500, 1000]
     var scaleFactor: CGFloat = 300
-    let engines: [OCREngine] = [.MLVision, .Tesseract, .Kakao]
-    var engine: OCREngine = .MLVision
+    let engines: [OCREngine] = [.Kakao, .Tesseract, .MLVision]
+    var engine: OCREngine = .Kakao
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +77,19 @@ class MainViewController: UIViewController {
             scannedString.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             scannedString.topAnchor.constraint(equalTo: loadPickerButton.bottomAnchor, constant: 40)
         ])
+        
+        
+//        sampleImage.frame.size = CGSize(width: 300, height: 300)
+//        sampleImage.backgroundColor = .red
+//        sampleImage.contentMode = .scaleAspectFit
+//        sampleImage.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(sampleImage)
+//        NSLayoutConstraint.activate([
+//            sampleImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            sampleImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//            sampleImage.widthAnchor.constraint(equalToConstant: 300),
+//            sampleImage.heightAnchor.constraint(equalToConstant: 300)
+//        ])
     }
     
     @objc func loadImagePicker() {
@@ -84,6 +100,7 @@ class MainViewController: UIViewController {
                 let imagePicker = UIImagePickerController()
                 imagePicker.delegate = self
                 imagePicker.sourceType = .camera
+//                imagePicker.allowsEditing = true
                 imagePicker.mediaTypes = [kUTTypeImage as String]
                 self.present(imagePicker, animated: true)
             }
@@ -94,6 +111,7 @@ class MainViewController: UIViewController {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
+//            imagePicker.allowsEditing = true
             imagePicker.mediaTypes = [kUTTypeImage as String]
             self.present(imagePicker, animated: true)
         }
@@ -161,7 +179,6 @@ class MainViewController: UIViewController {
             self.scannedString.text = "Kakao:\n\(resultString)"
         })
     }
-    
 }
 
 extension MainViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -171,25 +188,35 @@ extension MainViewController: UINavigationControllerDelegate, UIImagePickerContr
             return
         }
         
+        dismiss(animated: true, completion: {
+            let editor = EditorViewController(image: selectedPhoto)
+            editor.delegate = self
+            let navigationController = UINavigationController(rootViewController: editor)
+            navigationController.modalPresentationStyle = .overFullScreen
+            self.present(navigationController, animated: true, completion: nil)
+        })
+    }
+}
+
+extension MainViewController: MyCropDelegate {
+    func cropView(didFinishCropImage image: UIImage) {
+        guard let scaledImage = image.scaledImage(self.scaleFactor) else {
+            return
+        }
         
-        dismiss(animated: true) {
-            print("scale factor \(self.scaleFactor)")
-            guard let scaledImage = selectedPhoto.scaledImage(self.scaleFactor) else {
-                return
-            }
+//        sampleImage.image = image
+        
+        self.scannedString.text = "로딩중..."
+        
+        switch self.engine {
+        case .MLVision:
+            self.mlvisionOCR(scaledImage)
             
-            self.scannedString.text = "로딩중..."
+        case .Tesseract:
+            self.tesseractOCR(scaledImage)
             
-            switch self.engine {
-            case .MLVision:
-                self.mlvisionOCR(scaledImage)
-                
-            case .Tesseract:
-                self.tesseractOCR(scaledImage)
-                
-            case .Kakao:
-                self.kakaoOCR(scaledImage)
-            }
+        case .Kakao:
+            self.kakaoOCR(scaledImage)
         }
     }
 }
