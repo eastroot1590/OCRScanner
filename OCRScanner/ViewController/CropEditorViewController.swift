@@ -1,5 +1,5 @@
 //
-//  EditorViewController.swift
+//  CropEditorViewController.swift
 //  OCRScanner
 //
 //  Created by 이동근 on 2021/06/30.
@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol MyCropDelegate {
-    func cropView(didFinishCropImage image: UIImage)
+protocol CropEditorViewControllerDelegate {
+    func cropEditor(didFinishEdit image: UIImage)
 }
 
-class EditorViewController: UIViewController {
+class CropEditorViewController: UIViewController {
     let editingImage: UIImage
     
-    var editor: MyCropView!
+    var editor: CropEditorView!
     
-    var delegate: MyCropDelegate?
+    var delegate: CropEditorViewControllerDelegate?
     
     init(image: UIImage) {
         editingImage = image
@@ -40,7 +40,7 @@ class EditorViewController: UIViewController {
         
         title = "크롭크롭"
 
-        editor = MyCropView(frame: view.frame)
+        editor = CropEditorView(frame: view.frame)
         editor.setImage(editingImage)
     
         view.addSubview(editor)
@@ -71,7 +71,7 @@ class EditorViewController: UIViewController {
     
     @objc func done() {
         if let croppedImage = editor.croppedImage() {
-            delegate?.cropView(didFinishCropImage: croppedImage)
+            delegate?.cropEditor(didFinishEdit: croppedImage)
         }
         
         navigationController?.dismiss(animated: true, completion: nil)

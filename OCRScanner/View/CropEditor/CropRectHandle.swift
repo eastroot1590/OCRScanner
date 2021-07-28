@@ -1,5 +1,5 @@
 //
-//  CropEdge.swift
+//  CropRectHandle.swift
 //  OCRScanner
 //
 //  Created by 이동근 on 2021/07/01.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol CropEdgeDelegate {
-    func edge(_ edge: CropEdge, didBeginEditing editing: Bool)
-    func edge(_ edge: CropEdge, delta: CGPoint)
-    func edge(_ edge: CropEdge, didEndEditing editing: Bool)
+protocol CropRectHandleDelegate {
+    func edge(_ edge: CropRectHandle, didBeginEditing editing: Bool)
+    func edge(_ edge: CropRectHandle, delta: CGPoint)
+    func edge(_ edge: CropRectHandle, didEndEditing editing: Bool)
 }
 
-class CropEdge: UIView {
+class CropRectHandle: UIView {
     enum EditingEdge {
         case left
         case top
@@ -22,7 +22,7 @@ class CropEdge: UIView {
     }
     
     let edge: EditingEdge
-    var delegate: CropEdgeDelegate?
+    var delegate: CropRectHandleDelegate?
     
     var editingBegin: CGPoint = .zero
 
@@ -63,6 +63,26 @@ class CropEdge: UIView {
         }
         
         self.frame = edgeFrame
+    }
+    
+    func contain(_ point: CGPoint, scale: CGFloat = 2) -> Bool {
+        var xScale = scale
+        var yScale = scale
+        
+        switch  self.edge {
+        case .left, .right:
+            xScale = scale * 3
+            
+        case .top, .bottom:
+            yScale = scale * 3
+        }
+        
+        let origin: CGPoint = CGPoint(x: (frame.minX + frame.width / 2) - frame.width * xScale / 2, y: (frame.minY + frame.height / 2) - frame.height * yScale / 2)
+        let size: CGSize = CGSize(width: frame.width * xScale, height: frame.height * yScale)
+        
+        let touchBound = CGRect(origin: origin, size: size)
+        
+        return touchBound.contains(point)
     }
     
     @objc func handlePan(_ recognizer: UIPanGestureRecognizer) {

@@ -1,5 +1,5 @@
 //
-//  MyCropRectView.swift
+//  CropRectView.swift
 //  OCRScanner
 //
 //  Created by 이동근 on 2021/07/01.
@@ -13,16 +13,16 @@ protocol CropRectDelegate {
     func cropRect(didChange rect: CGRect)
 }
 
-class MyCropRectView: UIView {
+class CropRectView: UIView {
     let padding: CGFloat = 40
     
-    var dimmingView: CropDimmingView?
+    var dimmingView: MaskableVisualEffectView?
     let frameLayer = CAShapeLayer()
     
-    let topEdge = CropEdge(.top)
-    let leftEdge = CropEdge(.left)
-    let rightEdge = CropEdge(.right)
-    let bottomEdge = CropEdge(.bottom)
+    let topEdge = CropRectHandle(.top)
+    let leftEdge = CropRectHandle(.left)
+    let rightEdge = CropRectHandle(.right)
+    let bottomEdge = CropRectHandle(.bottom)
     
     let initialFrame: CGRect
     var beginFrame: CGRect = .zero
@@ -81,7 +81,7 @@ class MyCropRectView: UIView {
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         for subview in subviews {
-            if let edge = subview as? CropEdge,
+            if let edge = subview as? CropRectHandle,
                edge.frame.contains(point) {
                 return edge
             }
@@ -91,14 +91,14 @@ class MyCropRectView: UIView {
     }
 }
 
-extension MyCropRectView: CropEdgeDelegate {
-    func edge(_ edge: CropEdge, didBeginEditing editing: Bool) {
+extension CropRectView: CropRectHandleDelegate {
+    func edge(_ edge: CropRectHandle, didBeginEditing editing: Bool) {
         beginFrame = frame
         
         delegate?.cropRect(didBeginEditing: frame)
     }
     
-    func edge(_ edge: CropEdge, delta: CGPoint) {
+    func edge(_ edge: CropRectHandle, delta: CGPoint) {
         var newFrame = frame
         
         switch edge.edge {
@@ -118,7 +118,7 @@ extension MyCropRectView: CropEdgeDelegate {
         frame = newFrame
     }
     
-    func edge(_ edge: CropEdge, didEndEditing editing: Bool) {
+    func edge(_ edge: CropRectHandle, didEndEditing editing: Bool) {
         delegate?.cropRect(didChange: frame)
     }
 }

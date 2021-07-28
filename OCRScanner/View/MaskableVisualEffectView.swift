@@ -1,5 +1,5 @@
 //
-//  CropDimmingView.swift
+//  MaskableVisualEffectView.swift
 //  OCRScanner
 //
 //  Created by 이동근 on 2021/07/01.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CropDimmingView: UIVisualEffectView {
+class MaskableVisualEffectView: UIVisualEffectView {
     init() {
         let blur = UIBlurEffect(style: .dark)
         

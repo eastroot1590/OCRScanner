@@ -1,5 +1,5 @@
 //
-//  UIImage+OCR.swift
+//  UIImage+OCRScanner.swift
 //  OCRScanner
 //
 //  Created by 이동근 on 2021/06/22.

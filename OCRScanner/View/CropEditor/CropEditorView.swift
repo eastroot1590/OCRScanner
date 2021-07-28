@@ -1,5 +1,5 @@
 //
-//  MyCropView.swift
+//  CropEditorView.swift
 //  OCRScanner
 //
 //  Created by 이동근 on 2021/06/30.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class MyCropView: UIView {
-    var cropRect: MyCropRectView!
+class CropEditorView: UIView {
+    var cropRect: CropRectView!
     
     var scrollView: UIScrollView!
-    var dimmingView: CropDimmingView!
+    var dimmingView: MaskableVisualEffectView!
     var imageView: UIImageView!
 
     override init(frame: CGRect) {
@@ -35,12 +35,12 @@ class MyCropView: UIView {
         scrollView.addSubview(imageView)
         scrollView.contentSize = CGSize(width: frame.width, height: frame.height)
         
-        dimmingView = CropDimmingView()
+        dimmingView = MaskableVisualEffectView()
         dimmingView.frame = frame
         dimmingView.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin, .flexibleBottomMargin]
         addSubview(dimmingView)
 
-        cropRect = MyCropRectView(frame: frame)
+        cropRect = CropRectView(frame: frame)
         cropRect.delegate = self
         cropRect.dimmingView = dimmingView
         addSubview(cropRect)
@@ -51,7 +51,7 @@ class MyCropView: UIView {
     }
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        if let edge = cropRect.hitTest(convert(point, to: cropRect), with: event) as? CropEdge {
+        if let edge = cropRect.hitTest(convert(point, to: cropRect), with: event) as? CropRectHandle {
             return edge
         } else {
             return scrollView
@@ -89,13 +89,13 @@ class MyCropView: UIView {
     }
 }
 
-extension MyCropView: UIScrollViewDelegate {
+extension CropEditorView: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         imageView
     }
 }
 
-extension MyCropView: CropRectDelegate {
+extension CropEditorView: CropRectDelegate {
     func cropRect(didBeginEditing rect: CGRect) {
         UIView.animate(withDuration: 0.2, animations: {
             self.dimmingView.alpha = 0.5

@@ -8,12 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		3DB7DE1C91BD6A30F2C1E122 /* Pods_OCRScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC3C25FE713D97B0584A43F /* Pods_OCRScanner.framework */; };
-		D31C95CF268C6630008A1FD1 /* MyCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31C95CE268C6630008A1FD1 /* MyCropView.swift */; };
-		D3456C61268C05E00035BA49 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3456C60268C05E00035BA49 /* EditorViewController.swift */; };
+		D31C95CF268C6630008A1FD1 /* CropEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31C95CE268C6630008A1FD1 /* CropEditorView.swift */; };
+		D3456C61268C05E00035BA49 /* CropEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3456C60268C05E00035BA49 /* CropEditorViewController.swift */; };
 		D34D99C02682B1310024F618 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34D99BF2682B1310024F618 /* Client.swift */; };
-		D3690EF6268D4106005893E3 /* MyCropRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3690EF5268D4106005893E3 /* MyCropRectView.swift */; };
-		D3690EF8268D504C005893E3 /* CropEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3690EF7268D504C005893E3 /* CropEdge.swift */; };
-		D3690EFA268D76B2005893E3 /* CropDimmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3690EF9268D76B2005893E3 /* CropDimmingView.swift */; };
+		D3690EF6268D4106005893E3 /* CropRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3690EF5268D4106005893E3 /* CropRectView.swift */; };
+		D3690EF8268D504C005893E3 /* CropRectHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3690EF7268D504C005893E3 /* CropRectHandle.swift */; };
+		D3690EFA268D76B2005893E3 /* MaskableVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3690EF9268D76B2005893E3 /* MaskableVisualEffectView.swift */; };
+		D3CB390426B0DBFF00812554 /* OCRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB390326B0DBFF00812554 /* OCRScanner.swift */; };
+		D3CB390726B0DC4E00812554 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB390626B0DC4E00812554 /* Rectangle.swift */; };
+		D3CB390926B0DD2400812554 /* KakaoOCRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB390826B0DD2400812554 /* KakaoOCRScanner.swift */; };
+		D3CB390B26B0DEA000812554 /* MLVisionOCRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB390A26B0DEA000812554 /* MLVisionOCRScanner.swift */; };
+		D3CB390D26B0DF4A00812554 /* TesseractOCRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB390C26B0DF4A00812554 /* TesseractOCRScanner.swift */; };
+		D3CB390F26B0E2FA00812554 /* OCRResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB390E26B0E2FA00812554 /* OCRResultViewController.swift */; };
+		D3CB391126B0E4D100812554 /* OCRToolPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB391026B0E4D100812554 /* OCRToolPicker.swift */; };
 		D3F1FF2F268191A500073B87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F1FF2E268191A500073B87 /* AppDelegate.swift */; };
 		D3F1FF31268191A500073B87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F1FF30268191A500073B87 /* SceneDelegate.swift */; };
 		D3F1FF33268191A500073B87 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F1FF32268191A500073B87 /* MainViewController.swift */; };
@@ -21,7 +28,7 @@
 		D3F1FF3B268191A600073B87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3F1FF39268191A600073B87 /* LaunchScreen.storyboard */; };
 		D3F1FF432681922800073B87 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F1FF422681922800073B87 /* RootNavigationController.swift */; };
 		D3F1FF452681935800073B87 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = D3F1FF442681935800073B87 /* tessdata */; };
-		D3F1FF472681970600073B87 /* UIImage+OCR.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F1FF462681970600073B87 /* UIImage+OCR.swift */; };
+		D3F1FF472681970600073B87 /* UIImage+OCRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F1FF462681970600073B87 /* UIImage+OCRScanner.swift */; };
 		D3F1FF492681AEF900073B87 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3F1FF482681AEF900073B87 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -29,12 +36,19 @@
 		0DC3C25FE713D97B0584A43F /* Pods_OCRScanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OCRScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA64F7508196A41839C1BB1 /* Pods-OCRScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OCRScanner.debug.xcconfig"; path = "Target Support Files/Pods-OCRScanner/Pods-OCRScanner.debug.xcconfig"; sourceTree = "<group>"; };
 		BC4AE518F5A4C8689A129A41 /* Pods-OCRScanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OCRScanner.release.xcconfig"; path = "Target Support Files/Pods-OCRScanner/Pods-OCRScanner.release.xcconfig"; sourceTree = "<group>"; };
-		D31C95CE268C6630008A1FD1 /* MyCropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCropView.swift; sourceTree = "<group>"; };
-		D3456C60268C05E00035BA49 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
+		D31C95CE268C6630008A1FD1 /* CropEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropEditorView.swift; sourceTree = "<group>"; };
+		D3456C60268C05E00035BA49 /* CropEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropEditorViewController.swift; sourceTree = "<group>"; };
 		D34D99BF2682B1310024F618 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		D3690EF5268D4106005893E3 /* MyCropRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCropRectView.swift; sourceTree = "<group>"; };
-		D3690EF7268D504C005893E3 /* CropEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropEdge.swift; sourceTree = "<group>"; };
-		D3690EF9268D76B2005893E3 /* CropDimmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropDimmingView.swift; sourceTree = "<group>"; };
+		D3690EF5268D4106005893E3 /* CropRectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropRectView.swift; sourceTree = "<group>"; };
+		D3690EF7268D504C005893E3 /* CropRectHandle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropRectHandle.swift; sourceTree = "<group>"; };
+		D3690EF9268D76B2005893E3 /* MaskableVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskableVisualEffectView.swift; sourceTree = "<group>"; };
+		D3CB390326B0DBFF00812554 /* OCRScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRScanner.swift; sourceTree = "<group>"; };
+		D3CB390626B0DC4E00812554 /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
+		D3CB390826B0DD2400812554 /* KakaoOCRScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoOCRScanner.swift; sourceTree = "<group>"; };
+		D3CB390A26B0DEA000812554 /* MLVisionOCRScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLVisionOCRScanner.swift; sourceTree = "<group>"; };
+		D3CB390C26B0DF4A00812554 /* TesseractOCRScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesseractOCRScanner.swift; sourceTree = "<group>"; };
+		D3CB390E26B0E2FA00812554 /* OCRResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRResultViewController.swift; sourceTree = "<group>"; };
+		D3CB391026B0E4D100812554 /* OCRToolPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRToolPicker.swift; sourceTree = "<group>"; };
 		D3F1FF2B268191A500073B87 /* OCRScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCRScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3F1FF2E268191A500073B87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3F1FF30268191A500073B87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,7 +58,7 @@
 		D3F1FF3C268191A600073B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3F1FF422681922800073B87 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		D3F1FF442681935800073B87 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
-		D3F1FF462681970600073B87 /* UIImage+OCR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+OCR.swift"; sourceTree = "<group>"; };
+		D3F1FF462681970600073B87 /* UIImage+OCRScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+OCRScanner.swift"; sourceTree = "<group>"; };
 		D3F1FF482681AEF900073B87 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,15 +91,70 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D3690EF4268D40F6005893E3 /* Crop */ = {
+		D3690EF4268D40F6005893E3 /* CropEditor */ = {
 			isa = PBXGroup;
 			children = (
-				D31C95CE268C6630008A1FD1 /* MyCropView.swift */,
-				D3690EF5268D4106005893E3 /* MyCropRectView.swift */,
-				D3690EF7268D504C005893E3 /* CropEdge.swift */,
-				D3690EF9268D76B2005893E3 /* CropDimmingView.swift */,
+				D31C95CE268C6630008A1FD1 /* CropEditorView.swift */,
+				D3690EF5268D4106005893E3 /* CropRectView.swift */,
+				D3690EF7268D504C005893E3 /* CropRectHandle.swift */,
 			);
-			path = Crop;
+			path = CropEditor;
+			sourceTree = "<group>";
+		};
+		D3CB38FE26B0D8E500812554 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D3690EF4268D40F6005893E3 /* CropEditor */,
+				D3690EF9268D76B2005893E3 /* MaskableVisualEffectView.swift */,
+				D3CB391026B0E4D100812554 /* OCRToolPicker.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D3CB38FF26B0D8F500812554 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				D3F1FF462681970600073B87 /* UIImage+OCRScanner.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		D3CB390026B0D93200812554 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D3F1FF32268191A500073B87 /* MainViewController.swift */,
+				D3F1FF422681922800073B87 /* RootNavigationController.swift */,
+				D3456C60268C05E00035BA49 /* CropEditorViewController.swift */,
+				D3CB390E26B0E2FA00812554 /* OCRResultViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D3CB390126B0DBD300812554 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB390226B0DBEE00812554 /* OCRScanner */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		D3CB390226B0DBEE00812554 /* OCRScanner */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB390326B0DBFF00812554 /* OCRScanner.swift */,
+				D3CB390826B0DD2400812554 /* KakaoOCRScanner.swift */,
+				D3CB390A26B0DEA000812554 /* MLVisionOCRScanner.swift */,
+				D3CB390C26B0DF4A00812554 /* TesseractOCRScanner.swift */,
+			);
+			path = OCRScanner;
+			sourceTree = "<group>";
+		};
+		D3CB390526B0DC2800812554 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB390626B0DC4E00812554 /* Rectangle.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		D3F1FF22268191A500073B87 = {
@@ -109,19 +178,19 @@
 		D3F1FF2D268191A500073B87 /* OCRScanner */ = {
 			isa = PBXGroup;
 			children = (
-				D3690EF4268D40F6005893E3 /* Crop */,
+				D3CB390526B0DC2800812554 /* Data */,
+				D3CB38FF26B0D8F500812554 /* UIKit */,
+				D3CB390126B0DBD300812554 /* Utility */,
+				D3CB390026B0D93200812554 /* ViewController */,
+				D3CB38FE26B0D8E500812554 /* View */,
 				D3F1FF2E268191A500073B87 /* AppDelegate.swift */,
 				D3F1FF30268191A500073B87 /* SceneDelegate.swift */,
-				D3F1FF32268191A500073B87 /* MainViewController.swift */,
 				D3F1FF37268191A600073B87 /* Assets.xcassets */,
 				D3F1FF442681935800073B87 /* tessdata */,
 				D3F1FF39268191A600073B87 /* LaunchScreen.storyboard */,
 				D3F1FF3C268191A600073B87 /* Info.plist */,
 				D3F1FF482681AEF900073B87 /* GoogleService-Info.plist */,
-				D3F1FF422681922800073B87 /* RootNavigationController.swift */,
-				D3F1FF462681970600073B87 /* UIImage+OCR.swift */,
 				D34D99BF2682B1310024F618 /* Client.swift */,
-				D3456C60268C05E00035BA49 /* EditorViewController.swift */,
 			);
 			path = OCRScanner;
 			sourceTree = "<group>";
@@ -241,17 +310,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D31C95CF268C6630008A1FD1 /* MyCropView.swift in Sources */,
+				D3CB390D26B0DF4A00812554 /* TesseractOCRScanner.swift in Sources */,
+				D31C95CF268C6630008A1FD1 /* CropEditorView.swift in Sources */,
 				D3F1FF33268191A500073B87 /* MainViewController.swift in Sources */,
 				D3F1FF432681922800073B87 /* RootNavigationController.swift in Sources */,
-				D3690EF6268D4106005893E3 /* MyCropRectView.swift in Sources */,
+				D3CB390726B0DC4E00812554 /* Rectangle.swift in Sources */,
+				D3690EF6268D4106005893E3 /* CropRectView.swift in Sources */,
 				D34D99C02682B1310024F618 /* Client.swift in Sources */,
-				D3690EFA268D76B2005893E3 /* CropDimmingView.swift in Sources */,
+				D3CB390426B0DBFF00812554 /* OCRScanner.swift in Sources */,
+				D3CB390B26B0DEA000812554 /* MLVisionOCRScanner.swift in Sources */,
+				D3690EFA268D76B2005893E3 /* MaskableVisualEffectView.swift in Sources */,
 				D3F1FF2F268191A500073B87 /* AppDelegate.swift in Sources */,
-				D3690EF8268D504C005893E3 /* CropEdge.swift in Sources */,
+				D3690EF8268D504C005893E3 /* CropRectHandle.swift in Sources */,
 				D3F1FF31268191A500073B87 /* SceneDelegate.swift in Sources */,
-				D3F1FF472681970600073B87 /* UIImage+OCR.swift in Sources */,
-				D3456C61268C05E00035BA49 /* EditorViewController.swift in Sources */,
+				D3F1FF472681970600073B87 /* UIImage+OCRScanner.swift in Sources */,
+				D3456C61268C05E00035BA49 /* CropEditorViewController.swift in Sources */,
+				D3CB390926B0DD2400812554 /* KakaoOCRScanner.swift in Sources */,
+				D3CB391126B0E4D100812554 /* OCRToolPicker.swift in Sources */,
+				D3CB390F26B0E2FA00812554 /* OCRResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
