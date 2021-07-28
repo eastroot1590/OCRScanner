@@ -7,8 +7,6 @@ target 'OCRScanner' do
 
   # Pods for OCRScanner
   pod 'TesseractOCRiOS'
-  pod 'Firebase/MLVision', '6.25.0'
-  pod 'Firebase/Functions'
-  pod 'PEPhotoCropEditor'
+  pod 'Firebase/MLVision'
 
 end

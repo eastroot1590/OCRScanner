@@ -15,6 +15,7 @@ class MLVisionOCRScanner: OCRScanner {
         options.languageHints = ["en", "ko"]
         
         let textRecognizer = vision.cloudTextRecognizer(options: options)
+        
         textRecognizer.process(VisionImage(image: sourceImage)) { result, error in
             if let error = error {
                 debugPrint(error)

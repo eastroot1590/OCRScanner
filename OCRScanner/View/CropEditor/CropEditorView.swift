@@ -80,12 +80,10 @@ class CropEditorView: UIView {
         var origin: CGPoint = CGPoint(x: cropRect.frame.origin.x + scrollView.contentOffset.x, y: cropRect.frame.origin.y + scrollView.contentOffset.y)
         origin.x *= imageScale / scrollScale
         origin.y *= imageScale / scrollScale
-        
+
         let size: CGSize = CGSize(width: cropRect.frame.width * imageScale / scrollScale, height: cropRect.frame.height * imageScale / scrollScale)
         
-        let cropTargetRect: CGRect = CGRect(origin: origin, size: size)
-        
-        return image.rotatedImageWithtransform(.identity, croppedTo: cropTargetRect)
+        return image.crop(CGRect(origin: origin, size: size))
     }
 }
 

@@ -7,12 +7,6 @@
 
 import UIKit
 import MobileCoreServices
-import TesseractOCR
-
-import PEPhotoCropEditor
-
-import Firebase
-
 
 class MainViewController: UIViewController {
     let ocrToolPicker = OCRToolPicker()
